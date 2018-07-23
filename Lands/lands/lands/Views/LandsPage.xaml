@@ -8,7 +8,39 @@
         <StackLayout BindingContext="{Binding Lands}"
                      Padding="5">
             <ListView
-                ItemsSource="{Binding Lands}">
+                HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshig,Mode=TwoWay}"
+                ItemsSource="{Binding Lands}"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout
+                                    Grid.Column="0"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        Text="{Binding Name}"
+                                        TextColor="Black"/>
+                                    <Label
+                                        Text="{Binding Capital}"
+                                        TextColor="Black"/>
+                                </StackLayout>
+                                <Image
+                                        Grid.Column="1"
+                                        HorizontalOptions="End"
+                                        Source="ic_chevron_right"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

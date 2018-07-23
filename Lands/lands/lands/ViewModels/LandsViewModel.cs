@@ -4,6 +4,8 @@ namespace lands.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
     using Models;
     using Services;
     using Xamarin.Forms;
@@ -16,6 +18,7 @@ namespace lands.ViewModels
 
         #region Attributes
         private ObservableCollection<Land> lands;
+        private bool isRefreshing;
         #endregion
 
         #region Properties
@@ -23,6 +26,11 @@ namespace lands.ViewModels
         {
             get { return lands; }
             set { SetValue(ref lands, value); }
+        }
+        public bool IsRefreshig
+        {
+            get { return isRefreshing; }
+            set { SetValue(ref isRefreshing, value); }
         }
         #endregion
 
@@ -37,6 +45,7 @@ namespace lands.ViewModels
         #region Methods
         private async void LoadLands()
         {
+            this.IsRefreshig = true;
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
@@ -63,6 +72,17 @@ namespace lands.ViewModels
 
             var list = (List<Land>)response.Result;
             this.Lands = new ObservableCollection<Land>(list);
+            this.IsRefreshig = false;
+        }
+        #endregion
+
+        #region Commands
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadLands);
+            }
         }
         #endregion
     }
