@@ -7,6 +7,12 @@
     <ContentPage.Content >
         <StackLayout BindingContext="{Binding Lands}"
                      Padding="5">
+            <SearchBar
+                Text="{Binding Filter,Mode=TwoWay}"
+                Placeholder="Search"
+                SearchCommand="{Binding SearchCommand}">
+                
+            </SearchBar>
             <ListView
                 HasUnevenRows="True"
                 IsPullToRefreshEnabled="True"

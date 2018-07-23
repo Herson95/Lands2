@@ -4,6 +4,7 @@ namespace lands.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using Models;
@@ -19,6 +20,8 @@ namespace lands.ViewModels
         #region Attributes
         private ObservableCollection<Land> lands;
         private bool isRefreshing;
+        private string filter;
+        private List<Land> landList;
         #endregion
 
         #region Properties
@@ -31,6 +34,15 @@ namespace lands.ViewModels
         {
             get { return isRefreshing; }
             set { SetValue(ref isRefreshing, value); }
+        }
+        public string Filter
+        {
+            get { return filter; }
+            set
+            {
+                SetValue(ref filter, value);
+                this.Search();
+            }
         }
         #endregion
 
@@ -70,8 +82,8 @@ namespace lands.ViewModels
                     "Accept");
             }
 
-            var list = (List<Land>)response.Result;
-            this.Lands = new ObservableCollection<Land>(list);
+            this.landList = (List<Land>)response.Result;
+            this.Lands = new ObservableCollection<Land>(this.landList);
             this.IsRefreshig = false;
         }
         #endregion
@@ -82,6 +94,26 @@ namespace lands.ViewModels
             get
             {
                 return new RelayCommand(LoadLands);
+            }
+        }
+        public ICommand SearchCommand
+        {
+            get
+            {
+                return new RelayCommand(Search);
+            }
+        }
+
+        private void Search()
+        {
+            if (string.IsNullOrEmpty(this.Filter))
+            {
+                this.Lands = new ObservableCollection<Land>(this.landList);
+            }
+            else
+            {
+                this.Lands = new ObservableCollection<Land>(
+                    this.landList.Where(l => l.Name.ToLower().Contains(this.Filter)));
             }
         }
         #endregion
