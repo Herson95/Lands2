@@ -10,6 +10,7 @@
     using System.Threading.Tasks;
     using Models;
     using Plugin.Connectivity;
+
     public class ApiService
     {
         public async Task<Response> CheckConnection()

@@ -5,10 +5,11 @@
              x:Class="lands.Views.LandsPage"
              Title="Lands">
     <ContentPage.Content >
-        <StackLayout BindingContext="{Binding Lands}">
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout BindingContext="{Binding Lands}"
+                     Padding="5">
+            <ListView
+                ItemsSource="{Binding Lands}">
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

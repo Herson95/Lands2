@@ -13,6 +13,7 @@ namespace lands.ViewModels
         #region Services
         private ApiService apiService;
         #endregion
+
         #region Attributes
         private ObservableCollection<Land> lands;
         #endregion
