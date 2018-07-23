@@ -9,36 +9,36 @@
     using System.Text;
     using System.Threading.Tasks;
     using Models;
-
+    using Plugin.Connectivity;
     public class ApiService
     {
-        //public async Task<Response> CheckConnection()
-        //{
-        //    if (!CrossConnectivity.Current.IsConnection)
-        //    {
-        //        return new Response
-        //        {
-        //            IsSuccess = false,
-        //            Message = "Please turn on your internet"
-        //        };
-        //    }
+        public async Task<Response> CheckConnection()
+        {
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Please turn on your internet"
+                };
+            }
 
-        //    var isReachable = await CrossConectivity.Current.IsRemoteReachable("google.com");
-        //    if (!isReachable)
-        //    {
-        //        return new Response
-        //        {
-        //            IsSuccess = false,
-        //            Message = "Check you internet connection"
-        //        };
-        //    }
+            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("google.com");
+            if (!isReachable)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Check you internet connection"
+                };
+            }
 
-        //    return new Response
-        //    {
-        //        IsSuccess = true,
-        //        Message = "Ok"
-        //    };
-        //}
+            return new Response
+            {
+                IsSuccess = true,
+                Message = "Ok"
+            };
+        }
 
         public async Task<TokenResponse> GetToken(
             string urlBase,
