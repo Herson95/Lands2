@@ -34,9 +34,9 @@
                                         TextColor="Black"/>
                                 </StackLayout>
                                 <Image
-                                        Grid.Column="1"
-                                        HorizontalOptions="End"
-                                        Source="ic_chevron_right"/>
+                                    Grid.Column="1"
+                                    HorizontalOptions="End"
+                                    Source="ic_chevron_right"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
