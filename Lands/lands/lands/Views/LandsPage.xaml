@@ -31,7 +31,7 @@
                                 HasShadow="True"
                                 >
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectedCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding SelectLandCommand}"/>
                                 </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
