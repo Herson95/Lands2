@@ -14,6 +14,11 @@
             get;
             set;
         }
+        public LandViewModel Land
+        {
+            get;
+            set;
+        }
         #endregion
 
         #region Constructors
@@ -23,8 +28,6 @@
             this.Login = new LoginViewModel();
         }
         #endregion
-
-
 
         #region Sigleton
         private static MainViewModel instance;
