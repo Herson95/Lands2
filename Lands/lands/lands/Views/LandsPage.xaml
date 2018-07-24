@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BindingContext="{Binding Main,Source={StaticResource Locator}}"
              x:Class="lands.Views.LandsPage"
+             BackgroundColor="Silver"
              Title="Lands">
     <ContentPage.Content >
-        <StackLayout BindingContext="{Binding Lands}"
-                     Padding="5">
+        <StackLayout 
+            BindingContext="{Binding Lands}">
             <SearchBar
                 Text="{Binding Filter,Mode=TwoWay}"
                 Placeholder="Search"
@@ -18,32 +19,40 @@
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsRefreshig,Mode=TwoWay}"
                 ItemsSource="{Binding Lands}"
-                RefreshCommand="{Binding RefreshCommand}">
+                RefreshCommand="{Binding RefreshCommand}"
+                SeparatorVisibility="None"
+                BackgroundColor="Silver">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <StackLayout
+                            <Frame
+                                Margin="5"
+                                CornerRadius="15"
+                                HasShadow="True"
+                                >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout
                                     Grid.Column="0"
                                     VerticalOptions="Center">
-                                    <Label
+                                        <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
                                         Text="{Binding Name}"
                                         TextColor="Black"/>
-                                    <Label
+                                        <Label
                                         Text="{Binding Capital}"
                                         TextColor="Black"/>
-                                </StackLayout>
-                                <Image
+                                    </StackLayout>
+                                    <Image
                                     Grid.Column="1"
                                     HorizontalOptions="End"
                                     Source="ic_chevron_right"/>
-                            </Grid>
+                                </Grid>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
