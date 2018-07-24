@@ -113,7 +113,8 @@ namespace lands.ViewModels
             else
             {
                 this.Lands = new ObservableCollection<Land>(
-                    this.landList.Where(l => l.Name.ToLower().Contains(this.Filter)));
+                    this.landList.Where(l => l.Name.ToLower().Contains(this.Filter.ToLower()) ||
+                                        l.Capital.ToLower().Contains(this.Filter.ToLower())));
             }
         }
         #endregion
