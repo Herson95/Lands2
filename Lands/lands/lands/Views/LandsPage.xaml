@@ -7,7 +7,8 @@
              Title="Lands">
     <ContentPage.Content >
         <StackLayout 
-            BindingContext="{Binding Lands}">
+            BindingContext="{Binding Lands}"
+            Padding="15">
             <SearchBar
                 Text="{Binding Filter,Mode=TwoWay}"
                 Placeholder="Search"

@@ -31,7 +31,8 @@
                                 <Label Text="{Binding Name}"
                                        VerticalOptions="Center" 
                                        HorizontalOptions="Center"
-                                       TextColor="Black"/>
+                                       TextColor="Black"
+                                       Grid.Column="1"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
