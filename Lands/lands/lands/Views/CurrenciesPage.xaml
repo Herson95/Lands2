@@ -6,10 +6,44 @@
              Title="Currencies"
              Icon="ic_monetization_on">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Currencies"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout BindingContext="{Binding Land}"
+                     Padding="5">
+            <Label Text="{Binding Land.Name}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="Black"/>
+            <ListView
+                HasUnevenRows="True"
+                ItemsSource="{Binding Currencies}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Code}"
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="Center"
+                                       TextColor="Black"
+                                       Grid.Column="0"/>
+                                <Label Text="{Binding Name}"
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="Center"
+                                       TextColor="Black"
+                                       Grid.Column="1"/>
+                                <Label Text="{Binding Symbol}"
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="Center"
+                                       TextColor="Black"
+                                       Grid.Column="2"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

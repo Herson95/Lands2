@@ -6,10 +6,45 @@
              Title="Language"
              Icon="ic_people">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Languages"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout BindingContext="{Binding Land}"
+                     Padding="5">
+            <Label Text="{Binding Land.Name}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="Black"/>
+            <ListView
+                HasUnevenRows="True"
+                ItemsSource="{Binding Languages}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".5"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Iso6391}"
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="Center"
+                                       TextColor="Black"
+                                       Grid.Column="0"/>
+                                <Label Text="{Binding Name}"
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="Center"
+                                       TextColor="Black"
+                                       Grid.Column="1"/>
+                                <Label Text="{Binding NativeName}"
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="Center"
+                                       TextColor="Black"
+                                       Grid.Column="2"/>
+                                
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
