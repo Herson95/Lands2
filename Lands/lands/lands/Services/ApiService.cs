@@ -52,7 +52,7 @@
                 client.BaseAddress = new Uri(urlBase);
                 var response = await client.PostAsync("Token",
                     new StringContent(string.Format("grant_type=password&username={0}&password={1}",
-                    username, password), Encoding.UTF8, "Application/x-www-form-urlencoded"));
+                    username, password), Encoding.UTF8, "application/x-www-form-urlencoded"));
                 var resultJSON = await response.Content.ReadAsStringAsync();
                 var result = JsonConvert.DeserializeObject<TokenResponse>(resultJSON);
                 return result;
