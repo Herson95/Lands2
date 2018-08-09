@@ -101,7 +101,7 @@ namespace lands.ViewModels
                 return;
             }
 
-            var token = await this.apiService.GetToken(
+            /*var token = await this.apiService.GetToken(
                 "http://landsapi1.azurewebsites.net",
                 this.Email,
                 this.Password);
@@ -127,10 +127,18 @@ namespace lands.ViewModels
                     "Accept");
                 this.Password = string.Empty;
                 return;
-            }
+            }*/
 
+            if (this.Email!="admin" && this.Password!="admin")
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                      "Error",
+                      "User or password incorrect",
+                      "Accept");
+                return;
+            }
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token;
+            //mainViewModel.Token = token;
             mainViewModel.Lands = new LandsViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
 
