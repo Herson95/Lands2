@@ -137,6 +137,7 @@ namespace lands.ViewModels
                       "Accept");
                 return;
             }
+
             var mainViewModel = MainViewModel.GetInstance();
             //mainViewModel.Token = token;
             mainViewModel.Lands = new LandsViewModel();

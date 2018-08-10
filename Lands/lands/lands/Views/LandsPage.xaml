@@ -5,6 +5,7 @@
              x:Class="lands.Views.LandsPage"
              BackgroundColor="Silver"
              Title="Lands">
+
     <ContentPage.Content >
         <StackLayout 
             BindingContext="{Binding Lands}"
@@ -12,7 +13,8 @@
             <SearchBar
                 Text="{Binding Filter,Mode=TwoWay}"
                 Placeholder="Search"
-                SearchCommand="{Binding SearchCommand}">
+                SearchCommand="{Binding SearchCommand}"
+                HeightRequest="46">
                 
             </SearchBar>
             <ListView
