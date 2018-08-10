@@ -6,7 +6,7 @@ namespace lands.Interfaces
 
     public interface Ilocalize
     {
-        CultureInfo GetCultureInfo();
+        CultureInfo GetCurrentCultureInfo();
 
         void setLocale(CultureInfo ci);
     }
