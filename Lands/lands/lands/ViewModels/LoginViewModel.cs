@@ -25,7 +25,8 @@ namespace lands.ViewModels
         {
             this.IsRemembered = true;
             this.IsEnabled = true;
-
+            this.Email = "admin";
+            this.Password = "admin";
             this.apiService = new ApiService();
         }
         #endregion
