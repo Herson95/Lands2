@@ -10,6 +10,7 @@
     using System.Threading.Tasks;
     using Models;
     using Plugin.Connectivity;
+    using Domain;
 
     public class ApiService
     {
